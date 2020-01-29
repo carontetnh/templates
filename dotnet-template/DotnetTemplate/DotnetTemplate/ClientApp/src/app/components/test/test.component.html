@@ -1,0 +1,16 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th *ngFor="let header of headers">
+        {{ header }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let test of tests">
+      <td>{{ test.id }}</td>
+      <td>{{ test.test }}</td>
+    </tr>
+  </tbody>
+
+</table>
