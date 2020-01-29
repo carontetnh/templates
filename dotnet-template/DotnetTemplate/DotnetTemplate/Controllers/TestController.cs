@@ -21,10 +21,20 @@ namespace DotnetTemplate.Controllers
         [ProducesResponseType(200)]
         [SwaggerOperation("Test Description")]
 
-        public IEnumerable<TestResponse> GetTests()
+        public IActionResult GetTests()
         {
             var response = _testService.GetTests();
-            return response;
+            return Ok(response);
+        }
+
+        [HttpPost("api/test")]
+        [ProducesResponseType(200)]
+        [SwaggerOperation("Test Description")]
+
+        public IActionResult PostTests([FromBody]TestRequest request)
+        {
+            var response = _testService.AddTest(request);
+            return Ok(response);
         }
     }
 }

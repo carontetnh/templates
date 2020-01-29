@@ -9,5 +9,7 @@ namespace DotnetTemplate.Services
     public interface ITestService
     {
         IEnumerable<TestResponse> GetTests();
+
+        TestResponse AddTest(TestRequest request);
     }
 }

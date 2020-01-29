@@ -17,7 +17,7 @@ namespace DotnetTemplate.Data
             Configuration = configuration;
         }
 
-        DbSet<TestEntity> TestItems { get; set; }
+        public DbSet<TestEntity> TestItems { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

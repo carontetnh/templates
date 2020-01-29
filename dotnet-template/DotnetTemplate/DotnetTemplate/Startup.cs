@@ -1,3 +1,4 @@
+using AutoMapper;
 using DotnetTemplate.Data;
 using DotnetTemplate.Services;
 using Microsoft.AspNetCore.Builder;
@@ -37,6 +38,10 @@ namespace DotnetTemplate
             services.AddTransient<ITestService, TestService>();
 
             services.AddDbContext<ApplicationDbContext>();
+
+            services.AddAutoMapper(typeof(Startup));
+            services.AddControllersWithViews();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
