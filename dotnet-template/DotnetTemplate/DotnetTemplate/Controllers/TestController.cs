@@ -27,6 +27,16 @@ namespace DotnetTemplate.Controllers
             return response;
         }
 
+        [HttpGet("api/tests/{search}")]
+        [ProducesResponseType(200)]
+        [SwaggerOperation("Test Description")]
+
+        public IEnumerable<TestResponse> GetTestsByValue(string search)
+        {
+            var response = _testService.GetTests(search);
+            return response;
+        }
+
         [HttpPost("api/test")]
         [ProducesResponseType(200)]
         [SwaggerOperation("Test Description")]

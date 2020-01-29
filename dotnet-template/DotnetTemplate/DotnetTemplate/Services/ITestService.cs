@@ -8,7 +8,7 @@ namespace DotnetTemplate.Services
 {
     public interface ITestService
     {
-        IEnumerable<TestResponse> GetTests();
+        IEnumerable<TestResponse> GetTests(string filter = "");
 
         TestResponse AddTest(TestRequest request);
     }

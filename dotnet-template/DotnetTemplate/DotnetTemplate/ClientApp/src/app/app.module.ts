@@ -10,6 +10,9 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { TestComponent } from './components/test/test.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { FilterTestComponent } from './components/filter-test/filter-test.component';
+import { TestService } from './services/Test.Service';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { TestComponent } from './components/test/test.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    TestComponent
+    TestComponent,
+    FilterComponent,
+    FilterTestComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,9 +33,10 @@ import { TestComponent } from './components/test/test.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'filter-test', component: FilterTestComponent },
     ])
   ],
-  providers: [],
+  providers: [TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

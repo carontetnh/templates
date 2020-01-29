@@ -20,10 +20,13 @@ namespace DotnetTemplate.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<TestResponse> GetTests() {
+        public IEnumerable<TestResponse> GetTests(string filter = "") {
             List <TestResponse> response = new List<TestResponse>();
 
-            response = dbContext.TestItems.Select(test => _mapper.Map<TestResponse>(test)).ToList();
+            response = dbContext.TestItems
+                .Where(test => test.Test.ToLower().Contains(filter.ToLower()))
+                .Select(test => _mapper.Map<TestResponse>(test))
+                .ToList();
 
             return response;
         }
