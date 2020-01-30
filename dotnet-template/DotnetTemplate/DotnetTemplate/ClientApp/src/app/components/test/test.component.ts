@@ -9,12 +9,23 @@ import { TestService } from '../../services/Test.Service';
 })
 export class TestComponent {
   @Input() tests: any;
+  @Input() isMantenimiento = false;
   headers: string[] = ["Id", "Test"];
   constructor(private test: TestService) { }
 
   ngOnInit() {
-    this.tests = this.test.getTest().subscribe(
+    this.tests = this.test.getTests().subscribe(
       data => this.tests = data
     );
+  }
+
+  deleteTest(id) {
+    if (confirm("Are you sure?") == true) {
+      this.test.deleteTest(id).subscribe(
+        data => {
+          this.tests = data;
+        }
+      );
+    }
   }
 }

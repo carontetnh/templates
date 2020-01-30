@@ -18,7 +18,7 @@ export class FilterTestComponent implements OnInit {
 
   filterData(search) {
     if (search.value == "") {
-      this.test.getTest().subscribe(data => this.tests = data);
+      this.test.getTests().subscribe(data => this.tests = data);
     } else {
       this.test.getTestByValue(search.value).subscribe(data => this.tests = data);
     }
@@ -26,7 +26,7 @@ export class FilterTestComponent implements OnInit {
 
   clearData(search) {
     search.value = "";
-    this.test.getTest().subscribe(data => this.tests = data);
+    this.test.getTests().subscribe(data => this.tests = data);
   }
 
 

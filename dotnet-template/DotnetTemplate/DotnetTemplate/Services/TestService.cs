@@ -33,9 +33,36 @@ namespace DotnetTemplate.Services
 
         public TestResponse AddTest(TestRequest request) {
             TestEntity test = _mapper.Map<TestEntity>(request);
-            dbContext.Add(test);
+            if (test.Id == 0)
+            {
+                dbContext.Add(test);
+            }
+            else {
+                TestEntity existingTest = dbContext.TestItems.FirstOrDefault(t => t.Id == test.Id);
+                existingTest.Test = test.Test;
+                dbContext.Update(existingTest);
+            }
             dbContext.SaveChanges();
             return _mapper.Map<TestResponse>(test);
+        }
+
+        public TestResponse GetTest(int id)
+        {
+
+            TestEntity test = dbContext.TestItems.FirstOrDefault(t => t.Id == id);
+            return _mapper.Map<TestResponse>(test);
+        }
+
+        public IEnumerable<TestResponse> DeleteTest(int id) {
+
+            //Next time modify a state instead on deleting a record
+
+            TestEntity test = dbContext.TestItems.FirstOrDefault(t => t.Id == id);
+            dbContext.TestItems.Remove(test);
+            dbContext.SaveChanges();
+
+            return dbContext.TestItems.Select(test => _mapper.Map<TestResponse>(test))
+                .ToList();
         }
     }
 }

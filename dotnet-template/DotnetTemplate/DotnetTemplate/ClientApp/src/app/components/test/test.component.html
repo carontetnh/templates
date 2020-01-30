@@ -4,12 +4,17 @@
       <th *ngFor="let header of headers">
         {{ header }}
       </th>
+      <th *ngIf="isMantenimiento==true">Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let test of tests">
       <td>{{ test.id }}</td>
       <td>{{ test.test }}</td>
+      <td *ngIf="isMantenimiento==true">
+        <i [routerLink]="['/actions-test', test.id]" class="btn btn-primary">Edit</i>
+        <i (click)="deleteTest(test.id)" class="btn btn-danger">Remove</i>
+      </td>
     </tr>
   </tbody>
 </table>

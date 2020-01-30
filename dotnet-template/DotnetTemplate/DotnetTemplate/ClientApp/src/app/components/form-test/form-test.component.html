@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>{{ title }}</h2>
+    <form [formGroup]="testForm" (ngSubmit)="saveData()">
+      <div class="form-group">
+        <label>Id</label>
+        <input type="text" class="form-control" readonly formControlName="Id"/>
+      </div>
+
+      <div class="form-group">
+        <label>Test</label>
+        <input type="text" class="form-control" formControlName="Test"/>
+      </div>
+      <div>
+        <input type="submit" value="Save" class="btn btn-success" [disabled]="!testForm.valid"/>
+        <button [routerLink]="['/actions-test']" class="btn btn-primary">Back</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div style="margin:1em" *ngIf="testForm.valid==false">
+  <div class="alert alert-danger">Please verify the values on the form</div>
+</div>
+
+
+

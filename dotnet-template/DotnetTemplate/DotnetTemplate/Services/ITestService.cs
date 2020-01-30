@@ -11,5 +11,9 @@ namespace DotnetTemplate.Services
         IEnumerable<TestResponse> GetTests(string filter = "");
 
         TestResponse AddTest(TestRequest request);
+
+        IEnumerable<TestResponse> DeleteTest(int id);
+
+        TestResponse GetTest(int id);
     }
 }

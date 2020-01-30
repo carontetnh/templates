@@ -37,6 +37,17 @@ namespace DotnetTemplate.Controllers
             return response;
         }
 
+        [HttpGet("api/test/{id}")]
+        [ProducesResponseType(200)]
+        [SwaggerOperation("Test Description")]
+
+        public TestResponse GetTestById(int id)
+        {
+            var response = _testService.GetTest(id);
+            return response;
+        }
+
+
         [HttpPost("api/test")]
         [ProducesResponseType(200)]
         [SwaggerOperation("Test Description")]
@@ -44,6 +55,12 @@ namespace DotnetTemplate.Controllers
         public IActionResult PostTests([FromBody]TestRequest request)
         {
             var response = _testService.AddTest(request);
+            return Ok(response);
+        }
+
+        [HttpDelete("api/test/{id}")]
+        public IActionResult DeleteTest(int id) {
+            var response = _testService.DeleteTest(id);
             return Ok(response);
         }
     }

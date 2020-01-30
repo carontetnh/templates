@@ -12,13 +12,27 @@ export class TestService {
     this.urlBase = baseUrl;
   }
 
-  public getTest() {
+  public getTests() {
     return this.http.get<Test[]>(this.urlBase + 'api/tests')
   }
 
   public getTestByValue(search:string) {
     return this.http.get<Test[]>(this.urlBase + 'api/tests/' + search)
   }
+
+  public saveTest(test) {
+    return this.http.post<Test>(this.urlBase + 'api/test', test);
+  }
+
+  public getTest(id) {
+    return this.http.get<Test>(this.urlBase + 'api/test/' + id);
+  }
+
+  public deleteTest(id) {
+    return this.http.delete(this.urlBase + 'api/test/' + id);
+  }
+
+
 }
 
 interface Test {
