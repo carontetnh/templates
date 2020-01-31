@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-12">
+    <form [formGroup]="user" (ngSubmit)="login()">
+      <h1>Login</h1>
+      <div>
+        <label>User:</label>
+        <input type="text" class="form-control" formControlName="Username"/>
+        <div style="color:red" *ngIf="user.controls['Username'].errors?.required">Username is required</div>
+      </div>
+
+      <div>
+        <label>Password:</label>
+        <input type="password" class="form-control" formControlName="Password" />
+        <div style="color:red" *ngIf="user.controls['Password'].errors?.required">Password is required</div>
+      </div>
+
+      <div>
+        <input type="submit" [disabled]="!user.valid" value="Login" class="btn btn-success" />
+        <input type="button" value="Cancel" class="btn btn-primary" />
+      </div>
+    </form>
+    <div style="color:red" *ngIf="error==true">
+      Wrong user or password
+    </div>
+
+  </div>
+</div>
